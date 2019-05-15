@@ -60,7 +60,7 @@ class ProfileShow extends React.Component {
       <section className="section profile">
         <div className="container username">
           <h1 className="title is-1">{this.state.data.username}</h1>
-          <Link to="/articles/new" className="createArticle button">Create New Article</Link>
+          {this.props.match.path === '/me' && <Link to="/articles/new" className="createArticle button">Create New Article</Link>}
         </div>
         <div className="container profile_button">
           <a onClick={this.handleToggle} id="articles" className={articles ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you wrote' : 'Articles user wrote'}</a>
