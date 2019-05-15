@@ -1,11 +1,11 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 
 
 const SecureRoute = ({ component: Component, ...otherProps }) => {
   if (Auth.isAuthenticated()) return <Route {...otherProps} component={Component}/>
-  return <Redirect to="/login"/>
+  return null
 }
 
 export default SecureRoute

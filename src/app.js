@@ -3,7 +3,6 @@ import Modal from 'react-modal'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch } from 'react-router-dom'
 import Auth from './lib/Auth'
-// import  ReactMarkdown from 'react-markdown/with-html'
 import './scss/style.scss'
 import SecureRoute from './components/common/SecureRoute'
 import Navbar from './components/common/Navbar'
@@ -15,8 +14,6 @@ import ProfilesIndex from './components/profiles/ProfilesIndex'
 import Homepage from './components/Homepage'
 import ArticleNew from './components/articles/ArticleNew'
 import Register from './components/auth/Register'
-
-// const input = '# This is a header\n\nAnd this is a paragraph\n\nThis block of Markdown contains <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>, and will require the <code>html-parser</code> AST plugin to be loaded, in addition to setting the <code class="prop">escapeHtml</code> property to false.'
 
 Modal.setAppElement('body')
 
@@ -33,7 +30,7 @@ class App extends React.Component {
   }
 
   changeState(){
-    this.setState({...this.state, show_modal: !this.state.show_modal })
+    this.setState({...this.state, show_modal: !this.state.show_modal, already_member: true })
   }
 
   handleToggle() {
@@ -78,13 +75,6 @@ class App extends React.Component {
     )
   }
 }
-
-// ReactDOM.render(
-//   <ReactMarkdown
-//     source={input}
-//     escapeHtml={false}/>,
-//   document.getElementById('root')
-// )
 
 ReactDOM.render(
   <App />,
