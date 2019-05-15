@@ -217,4 +217,7 @@ body #root {
   .tile:not(.is-child) {
       display: block;
   }
+  .tile.is-4 {
+    width: 100%;
+  }
 }
