@@ -16,7 +16,8 @@ def register():
         user.save()
     except BadRequest as e:
         return jsonify({
-            'message': 'Bad JSON'
+            # 'message': 'Bad JSON'
+            'message' : e
         }), 422
     except IntegrityError as e:
         return jsonify({
@@ -31,7 +32,10 @@ def register():
 @api.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    user = User.query.filter_by(email=data.get('email')).first()
+    if data.get('email') and data.get('password'):
+        user = User.query.filter_by(email=data.get('email')).first()
+    else:
+        return jsonify({'message': 'Missing fields'}), 401
     if not user:
         return jsonify({'message': 'This user does not exist'}), 401
     if not user.validate_password(data.get('password', '')):
