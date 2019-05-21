@@ -57,7 +57,6 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.username && <small className="help is-danger">Username missing</small>}
             </div>
             <div className="field">
               <div className="control">
@@ -81,7 +80,10 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.password && <small className="help is-danger">Password missing</small>}
+              {this.state.errors.password &&
+                 <small className="help is-danger">{this.state.errors.password}
+                 </small>
+              }
             </div>
             <div className="field">
               <div className="control">
@@ -94,8 +96,10 @@ class Register extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.password_confirmation && <small className="help is-danger">{this.state.errors.password_confirmation}</small>}
-              {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
+              {this.state.errors.password_confirmation &&
+                <small className="help is-danger">{this.state.errors.password_confirmation}
+                </small>
+              }
             </div>
             {button}
 
