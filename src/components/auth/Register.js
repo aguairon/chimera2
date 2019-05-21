@@ -33,6 +33,14 @@ class Register extends React.Component {
   }
 
   render() {
+    let button
+
+    const {password, username, email, password_confirmation: passwordConfirmation} = this.state.data
+    if (!email || !username || !password || !passwordConfirmation) {
+      button = <button disabled className="button is-info">Register</button>
+    } else {
+      button = <button className="button is-info">Register</button>
+    }
     return (
       <main className="section">
         <div className="container">
@@ -89,7 +97,7 @@ class Register extends React.Component {
               {this.state.errors.password_confirmation && <small className="help is-danger">{this.state.errors.password_confirmation}</small>}
               {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
-            <button className="button is-info">Register</button>
+            {button}
 
           </form>
           <a
