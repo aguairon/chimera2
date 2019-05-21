@@ -34,7 +34,7 @@ class Register extends React.Component {
 
   render() {
     let button
-
+    const {password: errPass, password_confirmation: errPassCon} = this.state.errors
     const {password, username, email, password_confirmation: passwordConfirmation} = this.state.data
     if (!email || !username || !password || !passwordConfirmation) {
       button = <button disabled className="button is-info">Register</button>
@@ -53,7 +53,7 @@ class Register extends React.Component {
                   className="input"
                   name="username"
                   placeholder="Username"
-                  value={this.state.data.username || ''}
+                  value={username || ''}
                   onChange={this.handleChange}
                 />
               </div>
@@ -64,7 +64,7 @@ class Register extends React.Component {
                   className="input"
                   name="email"
                   placeholder="Email"
-                  value={this.state.data.email || ''}
+                  value={email || ''}
                   onChange={this.handleChange}
                 />
               </div>
@@ -76,12 +76,12 @@ class Register extends React.Component {
                   className="input"
                   name="password"
                   placeholder="Password"
-                  value={this.state.data.password || ''}
+                  value={password || ''}
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.password &&
-                 <small className="help is-danger">{this.state.errors.password}
+              {errPass &&
+                 <small className="help is-danger">{errPass}
                  </small>
               }
             </div>
@@ -92,12 +92,12 @@ class Register extends React.Component {
                   className="input"
                   name="password_confirmation"
                   placeholder="Password confirmation"
-                  value={this.state.data.password_confirmation || ''}
+                  value={passwordConfirmation || ''}
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.errors.password_confirmation &&
-                <small className="help is-danger">{this.state.errors.password_confirmation}
+              {errPassCon &&
+                <small className="help is-danger">{errPassCon}
                 </small>
               }
             </div>
