@@ -32,10 +32,7 @@ def register():
 @api.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    if data.get('email') and data.get('password'):
-        user = User.query.filter_by(email=data.get('email')).first()
-    else:
-        return jsonify({'message': 'Missing fields'}), 401
+    user = User.query.filter_by(email=data.get('email')).first()
     if not user:
         return jsonify({'message': 'This user does not exist'}), 401
     if not user.validate_password(data.get('password', '')):
