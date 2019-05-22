@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import ModalButton from './ModalButton'
 
 class Login extends React.Component {
   constructor() {
@@ -32,12 +33,6 @@ class Login extends React.Component {
   }
 
   render() {
-    let button
-    if (!this.state.data.email || !this.state.data.password ) {
-      button = <button disabled className="button is-info">Log In</button>
-    } else {
-      button = <button className="button is-info">Log In</button>
-    }
     return (
       <main className="section">
         <div className="container">
@@ -68,7 +63,7 @@ class Login extends React.Component {
               </div>
               {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
-            {button}
+            <ModalButton data = {this.state.data} type = "Log In"/>
 
           </form>
           <a

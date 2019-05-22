@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import ModalButton from './ModalButton'
 
 class Register extends React.Component {
   constructor() {
@@ -9,7 +10,7 @@ class Register extends React.Component {
       data: {},
       errors: ''
     }
-    
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -32,14 +33,9 @@ class Register extends React.Component {
   }
 
   render() {
-    let button
     const {password: errPass, password_confirmation: errPassCon} = this.state.errors
     const {password, username, email, password_confirmation: passwordConfirmation} = this.state.data
-    if (!email || !username || !password || !passwordConfirmation) {
-      button = <button disabled className="button is-info">Register</button>
-    } else {
-      button = <button className="button is-info">Register</button>
-    }
+
     return (
       <main className="section">
         <div className="container">
@@ -100,7 +96,7 @@ class Register extends React.Component {
                 </span>
               }
             </div>
-            {button}
+            <ModalButton data = {this.state.data} type = "Register"/>
 
           </form>
           <a
