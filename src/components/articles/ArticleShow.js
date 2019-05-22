@@ -75,7 +75,9 @@ class ArticleShow extends React.Component {
           <h1 className='title is-1'>{title}</h1>
           <article className="tile article is-child notification is-danger">
             <div className="content">
-              {content}
+              {content.split('\n').map((item, key) => {
+                return <span key={key}>{item}<br/></span>
+              })}
             </div>
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>

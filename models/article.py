@@ -15,7 +15,7 @@ class Article(db.Model, BaseModel):
 
     __tablename__ = 'articles'
     title = db.Column(db.String(80), nullable=False, unique=True)
-    content = db.Column(db.Text, nullable=True)
+    content = db.Column(db.Text, nullable=False)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref='created_articles')
     liked_by = db.relationship(
