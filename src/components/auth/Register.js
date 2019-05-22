@@ -81,8 +81,8 @@ class Register extends React.Component {
                 />
               </div>
               {errPass &&
-                 <small className="help is-danger">{errPass}
-                 </small>
+                 <span className="help is-danger">{errPass}
+                 </span>
               }
             </div>
             <div className="field">
@@ -97,8 +97,8 @@ class Register extends React.Component {
                 />
               </div>
               {errPassCon &&
-                <small className="help is-danger">{errPassCon}
-                </small>
+                <span className="help is-danger">{errPassCon}
+                </span>
               }
             </div>
             {button}
