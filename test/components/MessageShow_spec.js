@@ -15,7 +15,7 @@ describe('MessageShow test', () => {
       },
       updated_at: '2019-03-04 20:53:21'
     }
-    wrapper = shallow(<MessageShow key={message.id} message={message}/>)
+    wrapper = shallow(<MessageShow message={message}/>)
     done()
   })
 
