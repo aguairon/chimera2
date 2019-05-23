@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import ModalButton from './ModalButton'
+import ModalSwapLink from './ModalSwapLink'
 
 class Login extends React.Component {
   constructor() {
@@ -66,12 +67,7 @@ class Login extends React.Component {
             <ModalButton data = {this.state.data} type = "Log In"/>
 
           </form>
-          <a
-            className="swap_form"
-            onClick={this.props.handleToggle}
-          >
-            Not a member? Please register
-          </a>
+          <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
         </div>
       </main>
     )

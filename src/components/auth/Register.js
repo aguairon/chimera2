@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import ModalButton from './ModalButton'
+import ModalSwapLink from './ModalSwapLink'
 
 class Register extends React.Component {
   constructor() {
@@ -99,12 +100,7 @@ class Register extends React.Component {
             <ModalButton data = {this.state.data} type = "Register"/>
 
           </form>
-          <a
-            className="swap_form"
-            onClick={this.props.handleToggle}
-          >
-          Already a member? Sign in
-          </a>
+          <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
         </div>
       </main>
     )
