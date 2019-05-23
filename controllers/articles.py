@@ -18,7 +18,7 @@ def index():
 
 @api.route('/articles/latest', methods=['GET'])
 def desc():
-    articles = Article.query.order_by(Article.updated_at.desc()).limit(1).all()
+    articles = Article.query.order_by(Article.updated_at.desc()).limit(1)
     return articles_schema.jsonify(articles)
 
 @api.route('/articles/most-liked', methods=['GET'])

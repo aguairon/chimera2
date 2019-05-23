@@ -31,11 +31,7 @@ class Homepage extends React.Component {
           <div className="container">
             <h1 className="title is-1">Latest article</h1>
             <div className="tile is-ancestor">
-              {this.state.articles.map(article =>
-                <div key={article.id} className="tile">
-                  <ArticlePanel  {...article}/>
-                </div>
-              )}
+              <ArticlePanel  {...this.state.articles[0]}/>
             </div>
           </div>
         </section>
