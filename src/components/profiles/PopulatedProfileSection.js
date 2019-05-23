@@ -5,7 +5,7 @@ const PopulatedProfileSection = ({items}) => {
   return (
     <section className="section">
       <div className="container">
-        <div className="tile is-ancestor is-vertical">
+        <div className="tile is-ancestor">
           {items.map(item => <div key={item.id} className="tile">
             <ArticlePanel {...item}/>
           </div>)}
