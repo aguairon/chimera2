@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ArticlePanel = ({ article, h1}) => {
-  const {id, title, content} = article
+const ArticlePanel = ({ article: {id, title, content}, h1}) => {
   return(
     <div className="container">
       {h1 && <h1 className="title is-1">{h1}</h1>}
