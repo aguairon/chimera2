@@ -28,20 +28,14 @@ class Homepage extends React.Component {
     return(
       <main>
         <section className="section">
-          <div className="container">
-            <h1 className="title is-1">Latest article</h1>
-            <div className="tile is-ancestor">
-              <ArticlePanel  {...this.state.articles[0]}/>
+          {this.state.articles.map(article =>
+            <div key={article.id} className="tile">
+              <ArticlePanel  article= {article} h1={'Latest article'}/>
             </div>
-          </div>
+          )}
         </section>
         <section className="section">
-          <div className="container">
-            <h1 className="title is-1">Most liked article</h1>
-            <div className="tile is-ancestor">
-              <ArticlePanel  {...this.state.likedArticle}/>
-            </div>
-          </div>
+          <ArticlePanel  article={this.state.likedArticle} h1={'Most liked article'}/>
         </section>
         <section className="section">
           <div className="container">
