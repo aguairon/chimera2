@@ -15,7 +15,7 @@ class Homepage extends React.Component {
   componentDidMount() {
 
     Promise.props({
-      articles: axios.get('/api/articles/latest').then(res => res.data),
+      latest: axios.get('/api/articles/latest').then(res => res.data),
       user: axios.get('/api/users/most-prolific').then(res => res.data),
       likedArticle: axios.get('/api/articles/most-liked').then(res => res.data)
     })
@@ -23,16 +23,12 @@ class Homepage extends React.Component {
   }
 
   render() {
-    if(!this.state.articles || !this.state.user || !this.state.likedArticle) return null
+    if(!this.state.latest || !this.state.user || !this.state.likedArticle) return null
     const {id, username, email, created_articles: createdArticles } = this.state.user
     return(
       <main>
         <section className="section">
-          {this.state.articles.map(article =>
-            <div key={article.id} className="tile">
-              <ArticlePanel  article= {article} h1={'Latest article'}/>
-            </div>
-          )}
+          <ArticlePanel  article= {this.state.latest[0]} h1={'Latest article'}/>
         </section>
         <section className="section">
           <ArticlePanel  article={this.state.likedArticle} h1={'Most liked article'}/>
