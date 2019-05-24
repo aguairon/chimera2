@@ -13,7 +13,6 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-
     Promise.props({
       latest: axios.get('/api/articles/latest').then(res => res.data),
       user: axios.get('/api/users/most-prolific').then(res => res.data),
