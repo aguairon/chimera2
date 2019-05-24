@@ -22,15 +22,16 @@ class Homepage extends React.Component {
   }
 
   render() {
-    if(!this.state.latest || !this.state.user || !this.state.likedArticle) return null
-    const {id, username, email, created_articles: createdArticles } = this.state.user
+    const {latest, user, likedArticle} = this.state
+    if(!latest || !user || !likedArticle) return null
+    const {id, username, email, created_articles: createdArticles } = user
     return(
       <main>
         <section className="section">
-          <ArticlePanel  article= {this.state.latest[0]} h1={'Latest article'}/>
+          <ArticlePanel  article= {latest[0]} h1={'Latest article'}/>
         </section>
         <section className="section">
-          <ArticlePanel  article={this.state.likedArticle} h1={'Most liked article'}/>
+          <ArticlePanel  article={likedArticle} h1={'Most liked article'}/>
         </section>
         <section className="section">
           <div className="container">
