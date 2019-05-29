@@ -2,6 +2,29 @@ import React from 'react'
 import Auth from '../../lib/Auth'
 
 const ArticleLike = ({ likedBy, handleLike, error }) => {
+  const userLiked = 'You have liked this.'
+  const likedMany = 'This article has been liked ' + likedBy.length + ' times.'
+  const likedOnce = 'This article has been liked once.'
+  
+  let message
+  if (error === 403) {
+    message = <p>You cannot like your own article.</p>
+  } else if (likedBy.length === 0){
+    message = <p>This article has not been liked yet.</p>
+  } else if (likedBy.length === 1) {
+    if (likedBy.some(like => Auth.isCurrentUser(like.id))) {
+      message = <p>{userLiked} {likedOnce}</p>
+    } else {
+      message = <p>{likedOnce}</p>
+    }
+  } else {
+    if (likedBy.some(like => Auth.isCurrentUser(like.id))) {
+      message = <p>{userLiked} {likedMany}</p>
+    } else {
+      message = <p>{likedMany}</p>
+    }
+  }
+
   return (
     <div className={likedBy.some(like =>
       Auth.isCurrentUser(like.id)) ? 'likes liked_by_user' : 'likes'}>
@@ -10,11 +33,7 @@ const ArticleLike = ({ likedBy, handleLike, error }) => {
           <i className="fas fa-2x fa-thumbs-up"></i>
         </span>
       </button>
-      {error === 403 && <p>You cannot like your own article.</p>}
-      {likedBy.length > 0 && likedBy.some(like => Auth.isCurrentUser(like.id)) &&<p>You have liked this.</p> }
-      {likedBy.length === 1 && <p>This article has been liked once.</p>}
-      {likedBy.length > 1 && <p>This article has been liked {likedBy.length} times.</p>}
-      {likedBy.length === 0 && <p>This article has not been liked yet.</p>}
+      {message}
     </div>
   )
 }
