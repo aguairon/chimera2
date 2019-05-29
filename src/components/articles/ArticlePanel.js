@@ -11,7 +11,9 @@ const ArticlePanel = ({ article: {id, title, content}, h1}) => {
             <article className="tile article is-child notification is-danger">
               <p className="title">{title}</p>
               <div className="content">
-                {content}
+                {content.split('\n').map((item, key) => {
+                  return <span key={key}>{item}<br/></span>
+                })}
               </div>
             </article>
           </Link>
