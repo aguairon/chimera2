@@ -5,7 +5,7 @@ const ArticleLike = ({ likedBy, handleLike, error }) => {
   const userLiked = 'You have liked this.'
   const likedMany = 'This article has been liked ' + likedBy.length + ' times.'
   const likedOnce = 'This article has been liked once.'
-  
+
   let message
   if (error === 403) {
     message = <p>You cannot like your own article.</p>
@@ -24,7 +24,7 @@ const ArticleLike = ({ likedBy, handleLike, error }) => {
       message = <p>{likedMany}</p>
     }
   }
-
+  console.log(likedBy)
   return (
     <div className={likedBy.some(like =>
       Auth.isCurrentUser(like.id)) ? 'likes liked_by_user' : 'likes'}>
