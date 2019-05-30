@@ -1,12 +1,12 @@
 import React from 'react'
 
-const MessageShow = ({message}) => {
+const MessageShow = ({message: {content, sender, updatedAt}}) => {
   return(
     <article
       className="tile message is-child notification is-danger">
       <div className="content">
-        <p>{message.content}</p>
-        <p>{message.sender.username} <span>{message.updated_at}</span></p>
+        <p>{content}</p>
+        <p>{sender.username} <span>{updatedAt}</span></p>
       </div>
     </article>
   )
