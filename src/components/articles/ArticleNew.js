@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import FormButton from '../common/FormButton'
 
 class ArticleNew extends React.Component {
   constructor() {
@@ -63,7 +64,7 @@ class ArticleNew extends React.Component {
             </div>
 
             {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-            <button className="button is-primary">Submit</button>
+            <FormButton message={'Submit'}/>
           </form>
         </div>
       </main>

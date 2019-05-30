@@ -1,4 +1,5 @@
 import React from 'react'
+import FormButton from '../common/FormButton'
 
 const MessageForm = ({ data, handleChange, handleSubmit}) => {
   return (
@@ -14,7 +15,7 @@ const MessageForm = ({ data, handleChange, handleSubmit}) => {
           </textarea>
         </div>
       </div>
-      <button className="button is-primary">Save Message</button>
+      <FormButton message={'Submit'}/>
     </form>
   )
 }
