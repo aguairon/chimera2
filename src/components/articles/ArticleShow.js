@@ -88,9 +88,8 @@ class ArticleShow extends React.Component {
               handleChange={this.handleMessageChange}
               data={this.state.data}
             />
-            {this.state.newMessage && <MessageShow message={this.state.newMessage}/>}
           </div>
-          <MessagesIndex messages={messages} />
+          <MessagesIndex messages={messages} newMessage={this.state.newMessage}/>
         </div>
       </section>
     )
