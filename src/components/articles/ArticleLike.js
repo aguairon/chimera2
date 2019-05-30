@@ -24,7 +24,6 @@ const ArticleLike = ({ likedBy, handleLike, error }) => {
       message = <p>{likedMany}</p>
     }
   }
-  console.log(likedBy)
   return (
     <div className={likedBy.some(like =>
       Auth.isCurrentUser(like.id)) ? 'likes liked_by_user' : 'likes'}>
