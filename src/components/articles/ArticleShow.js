@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import MessagesIndex from '../../components/messages/MessagesIndex'
 import MessageForm from '../../components/messages/MessageForm'
 import ArticleLike from '../articles/ArticleLike'
-import MessageShow from '../messages/MessageShow'
 
 
 class ArticleShow extends React.Component {
@@ -82,13 +81,11 @@ class ArticleShow extends React.Component {
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
           <ArticleLike likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
-          <div className="tile is-parent is-vertical">
-            <MessageForm
-              handleSubmit={this.handleMessageSubmit}
-              handleChange={this.handleMessageChange}
-              data={this.state.data}
-            />
-          </div>
+          <MessageForm
+            handleSubmit={this.handleMessageSubmit}
+            handleChange={this.handleMessageChange}
+            data={this.state.data}
+          />
           <MessagesIndex messages={messages} newMessage={this.state.newMessage}/>
         </div>
       </section>

@@ -3,20 +3,22 @@ import FormButton from '../common/FormButton'
 
 const MessageForm = ({ data, handleChange, handleSubmit}) => {
   return (
-    <form className="messageForm" onSubmit={handleSubmit}>
-      <div className="field">
-        <div className="control">
-          <textarea
-            className="textarea"
-            placeholder="Add a message here"
-            name="content"
-            onChange={handleChange}
-            value={data.content || ''}>
-          </textarea>
+    <div className="tile is-parent is-vertical">
+      <form className="messageForm" onSubmit={handleSubmit}>
+        <div className="field">
+          <div className="control">
+            <textarea
+              className="textarea"
+              placeholder="Add a message here"
+              name="content"
+              onChange={handleChange}
+              value={data.content || ''}>
+            </textarea>
+          </div>
         </div>
-      </div>
-      <FormButton message={'Submit'}/>
-    </form>
+        <FormButton message={'Submit'}/>
+      </form>
+    </div>
   )
 }
 
