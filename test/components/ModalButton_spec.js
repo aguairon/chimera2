@@ -3,7 +3,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import ModalButton from '../../src/components/auth/ModalButton'
+import ModalButton from '../../src/components/common/ModalButton'
 
 describe('ModalButton Login test when no data is provided', () => {
   let wrapper

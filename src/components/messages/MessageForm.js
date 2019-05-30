@@ -16,7 +16,7 @@ const MessageForm = ({ data: {content}, handleChange, handleSubmit}) => {
             </textarea>
           </div>
         </div>
-        <FormButton message={'Submit'}/>
+        <FormButton type={'Submit'} content={content}/>
       </form>
     </div>
   )

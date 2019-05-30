@@ -35,6 +35,7 @@ class ArticleNew extends React.Component {
   }
 
   render() {
+    const {data,  error} = this.state
     return(
       <main className="section">
         <div className="container">
@@ -47,7 +48,7 @@ class ArticleNew extends React.Component {
                   placeholder="Article title"
                   onChange={this.handleChange}
                   name="title"
-                  value={this.state.data.title|| ''}
+                  value={data.title|| ''}
                 />
               </div>
             </div>
@@ -58,13 +59,13 @@ class ArticleNew extends React.Component {
                   placeholder="Please write your article here"
                   onChange={this.handleChange}
                   name="content"
-                  value={this.state.data.content || ''}
+                  value={data.content || ''}
                 />
               </div>
             </div>
 
-            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
-            <FormButton message={'Submit'}/>
+            {error && <small className="help is-danger">{error}</small>}
+            <FormButton type={'Submit'} data={data}/>
           </form>
         </div>
       </main>

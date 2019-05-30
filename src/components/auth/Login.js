@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-import ModalButton from './ModalButton'
+// src/lib/Auth.js
+import ModalButton from '../common/ModalButton'
 import ModalSwapLink from './ModalSwapLink'
 
 class Login extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-import ModalButton from './ModalButton'
+import ModalButton from '../common/ModalButton'
 import ModalSwapLink from './ModalSwapLink'
 
 class Register extends React.Component {
