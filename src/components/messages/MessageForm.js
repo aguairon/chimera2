@@ -1,7 +1,7 @@
 import React from 'react'
 import FormButton from '../common/FormButton'
 
-const MessageForm = ({ data, handleChange, handleSubmit}) => {
+const MessageForm = ({ data: {content}, handleChange, handleSubmit}) => {
   return (
     <div className="tile is-parent is-vertical">
       <form className="messageForm" onSubmit={handleSubmit}>
@@ -12,7 +12,7 @@ const MessageForm = ({ data, handleChange, handleSubmit}) => {
               placeholder="Add a message here"
               name="content"
               onChange={handleChange}
-              value={data.content || ''}>
+              value={content || ''}>
             </textarea>
           </div>
         </div>
