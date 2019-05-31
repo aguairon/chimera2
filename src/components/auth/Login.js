@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-// src/lib/Auth.js
 import FormButton from '../common/FormButton'
 import ModalSwapLink from './ModalSwapLink'
 
