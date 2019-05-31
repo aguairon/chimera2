@@ -39,7 +39,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const {password: errPass, password_confirmation: errPassCon} = this.state.errors
+    const {password: errPass, password_confirmation: errPassCon, message} = this.state.errors
     const {password, username, email, password_confirmation: passwordConfirmation} = this.state.data
 
     return (
@@ -48,6 +48,7 @@ class Register extends React.Component {
           <div className="logo"></div>
           <form onSubmit={this.handleSubmit}>
             <h2 className="title is-4">Register</h2>
+            {message && <span className="help is-danger">{message}</span>}
             <div className="field">
               <div className="control">
                 <input
