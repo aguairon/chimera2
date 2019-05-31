@@ -12,7 +12,8 @@ class ProfileShow extends React.Component {
     this.state = {
       articles: true,
       likes: false,
-      details: false
+      details: false,
+      active: ''
     }
     this.handleToggle = this.handleToggle.bind(this)
   }
@@ -54,26 +55,44 @@ class ProfileShow extends React.Component {
 
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
-    const  {articles, likes, details } = this.state
-    const {created_articles: createdArticles, email, created_at: createdAt} = this.state.data
+    const  {articles, likes, details,
+      data: {created_articles: createdArticles, email, created_at: createdAt, username, likes: dlikes}} = this.state
+
+    const selected = 'is-primary is-selected'
+    const currentUser = this.props.match.path === '/me'
+
+
     return(
       <section className="section profile">
         <div className="container username">
-          <h1 className="title is-1">{this.state.data.username}</h1>
-          {this.props.match.path === '/me' && <Link to="/articles/new" className="createArticle button">Create New Article</Link>}
+          <h1 className="title is-1">{username}</h1>
+          {currentUser &&
+          <Link to="/articles/new" className="createArticle button">Create New Article</Link>}
         </div>
         <div className="container profile_button">
-          <a onClick={this.handleToggle} id="articles" className={articles ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you wrote' : 'Articles user wrote'}</a>
-          <a onClick={this.handleToggle} id="likes" className={likes ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Articles you liked' : 'Articles user liked'}</a>
-          <a onClick={this.handleToggle} id="details" className={details ? 'button is-rounded is-primary is-selected' : 'button is-rounded'}>{this.props.match.path === '/me' ? 'Your details' : 'User details'}</a>
+          <a onClick={this.handleToggle}
+            id="articles"
+            className={'button is-rounded ' + (articles ? selected : '')}>
+            {currentUser ? 'Articles you wrote' : 'Articles user wrote'}
+          </a>
+          <a onClick={this.handleToggle}
+            id="likes"
+            className={'button is-rounded ' + (likes ? selected : '')}>
+            {currentUser ? 'Articles you liked' : 'Articles user liked'}
+          </a>
+          <a onClick={this.handleToggle}
+            id="details"
+            className={'button is-rounded ' + (details ? selected : '')}>
+            {currentUser ? 'Your details' : 'User details'}
+          </a>
         </div>
-        {this.state.articles &&
+        {articles &&
           <ProfileCreatedArticles createdArticles={createdArticles}/>
         }
-        {this.state.likes &&
-          <ProfileLikes liked={this.state.data.likes}/>
+        {likes &&
+          <ProfileLikes liked={dlikes}/>
         }
-        {this.state.details &&
+        {details &&
           <ProfileDetails email={email} createdAt={createdAt}/>
         }
       </section>
