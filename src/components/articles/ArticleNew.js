@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-import ModalButton from '../common/ModalButton'
+import FormButton from '../common/FormButton'
 
 class ArticleNew extends React.Component {
   constructor() {
@@ -65,7 +65,7 @@ class ArticleNew extends React.Component {
             </div>
 
             {error && <small className="help is-danger">{error}</small>}
-            <ModalButton data={data} action={'Submit'} type={'is-primary'}/>
+            <FormButton data={data} action={'Submit'} type={'is-primary'}/>
           </form>
         </div>
       </main>

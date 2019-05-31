@@ -3,15 +3,15 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow } from 'enzyme'
-import ModalButton from '../../src/components/common/ModalButton'
+import FormButton from '../../src/components/common/FormButton'
 
-describe('ModalButton Login test when no data is provided', () => {
+describe('FormButton Login test when no data is provided', () => {
   let wrapper
   beforeEach(done => {
     const data= {
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
+    wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -32,7 +32,7 @@ describe('ModalButton Login test with all required data', () => {
       password: 'passpass'
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
+    wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -45,7 +45,7 @@ describe('ModalButton Login test with all required data', () => {
   })
 })
 
-describe('ModalButton Login test some required data missing', () => {
+describe('FormButton Login test some required data missing', () => {
   let wrapper
   beforeEach(done => {
     const data= {
@@ -53,7 +53,7 @@ describe('ModalButton Login test some required data missing', () => {
       password: ''
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
+    wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -67,7 +67,7 @@ describe('ModalButton Login test some required data missing', () => {
 })
 
 
-describe('ModalButton register test some required data missing', () => {
+describe('FormButton register test some required data missing', () => {
   let wrapper
   beforeEach(done => {
     const data= {
@@ -77,7 +77,7 @@ describe('ModalButton register test some required data missing', () => {
       password_confirmation: ''
     }
     const action = 'Register'
-    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
+    wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -90,7 +90,7 @@ describe('ModalButton register test some required data missing', () => {
   })
 })
 
-describe('ModalButton register test with all required data', () => {
+describe('FormButton register test with all required data', () => {
   let wrapper
   beforeEach(done => {
     const data= {
@@ -100,7 +100,7 @@ describe('ModalButton register test with all required data', () => {
       password_confirmation: 'passpasss'
     }
     const action = 'Register'
-    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
+    wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)
     done()
   })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModalButton = ({data, action, type}) => {
+const FormButton = ({data, action, type}) => {
   let disabled
   if (action === 'Register') {
     const {password, username, email, password_confirmation: passwordConfirmation} = data
@@ -28,4 +28,4 @@ const ModalButton = ({data, action, type}) => {
   )
 }
 
-export default ModalButton
+export default FormButton

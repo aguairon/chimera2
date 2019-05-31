@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 // src/lib/Auth.js
-import ModalButton from '../common/ModalButton'
+import FormButton from '../common/FormButton'
 import ModalSwapLink from './ModalSwapLink'
 
 class Login extends React.Component {
@@ -65,7 +65,7 @@ class Login extends React.Component {
               </div>
               {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
-            <ModalButton data = {this.state.data} action = "Log In" type='is-info'/>
+            <FormButton data = {this.state.data} action = "Log In" type='is-info'/>
 
           </form>
           <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
