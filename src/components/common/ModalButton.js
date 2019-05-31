@@ -9,9 +9,15 @@ const ModalButton = ({data, action, type}) => {
     } else {
       disabled = false
     }
-  } else {
+  } else if (action === 'Log In') {
     const {email, password} = data
     if (!email || !password ) {
+      disabled = true
+    } else {
+      disabled = false
+    }
+  } else {
+    if (data.content === '' || data.title === '') {
       disabled = true
     } else {
       disabled = false

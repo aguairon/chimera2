@@ -1,5 +1,5 @@
 import React from 'react'
-import FormButton from '../common/FormButton'
+import ModalButton from '../common/ModalButton'
 
 const MessageForm = ({ data, handleChange, handleSubmit}) => {
   return (
@@ -16,7 +16,7 @@ const MessageForm = ({ data, handleChange, handleSubmit}) => {
             </textarea>
           </div>
         </div>
-        <FormButton data={data} action={'Submit'} type={'is-primary'}/>
+        <ModalButton data={data} action={'Submit'} type={'is-primary'}/>
       </form>
     </div>
   )
