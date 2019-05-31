@@ -65,7 +65,7 @@ class ArticleNew extends React.Component {
             </div>
 
             {error && <small className="help is-danger">{error}</small>}
-            <FormButton type={'Submit'} data={data}/>
+            <FormButton data={data} action={'Submit'} type={'is-primary'}/>
           </form>
         </div>
       </main>

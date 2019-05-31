@@ -1,14 +1,14 @@
 import React from 'react'
 
-const FormButton = ({content, type}) => {
-  let button
-  if (content) {
-    button = <button className="button is-primary">{type}</button>
+const FormButton = ({data, action, type}) => {
+  let disabled
+  if (!data.content) {
+    disabled = true
   } else {
-    button = <button disabled className="button is-primary">{type}</button>
+    disabled = false
   }
   return(
-    button
+    <button disabled={disabled} className={'button ' + type}>{action}{action}</button>
   )
 }
 
