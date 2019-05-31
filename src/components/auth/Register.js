@@ -29,7 +29,7 @@ class Register extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     axios
-      .post('api/register', this.state.data)
+      .post('/api/register', this.state.data)
       .then((res)=>{
         Auth.setToken(res.data.token)
         this.setState({ data: {}})
