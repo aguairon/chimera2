@@ -9,6 +9,8 @@ describe('FormButton Login test when no data is provided', () => {
   let wrapper
   beforeEach(done => {
     const data= {
+      email: '',
+      password: ''
     }
     const action = 'Log In'
     wrapper = shallow(<FormButton data={data} action={action} type='is-info'/>)

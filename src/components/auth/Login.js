@@ -9,7 +9,10 @@ class Login extends React.Component {
   constructor() {
     super()
     this.state = {
-      data: {},
+      data: {
+        email: '',
+        password: ''
+      },
       errors: ''
     }
     this.handleChange = this.handleChange.bind(this)
