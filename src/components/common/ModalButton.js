@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModalButton = ({data, action}) => {
+const ModalButton = ({data, action, type}) => {
   let disabled
   if (action === 'Register') {
     const {password, username, email, password_confirmation: passwordConfirmation} = data
@@ -18,7 +18,7 @@ const ModalButton = ({data, action}) => {
     }
   }
   return(
-    <button disabled={disabled} className="button is-info">{action}</button>
+    <button disabled={disabled} className={'button ' + type}>{action}</button>
   )
 }
 

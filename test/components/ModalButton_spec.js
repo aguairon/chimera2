@@ -11,7 +11,7 @@ describe('ModalButton Login test when no data is provided', () => {
     const data= {
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action}/>)
+    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -32,7 +32,7 @@ describe('ModalButton Login test with all required data', () => {
       password: 'passpass'
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action}/>)
+    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -53,7 +53,7 @@ describe('ModalButton Login test some required data missing', () => {
       password: ''
     }
     const action = 'Log In'
-    wrapper = shallow(<ModalButton data={data} action={action}/>)
+    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -77,7 +77,7 @@ describe('ModalButton register test some required data missing', () => {
       password_confirmation: ''
     }
     const action = 'Register'
-    wrapper = shallow(<ModalButton data={data} action={action}/>)
+    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
     done()
   })
 
@@ -100,7 +100,7 @@ describe('ModalButton register test with all required data', () => {
       password_confirmation: 'passpasss'
     }
     const action = 'Register'
-    wrapper = shallow(<ModalButton data={data} action={action}/>)
+    wrapper = shallow(<ModalButton data={data} action={action} type='is-info'/>)
     done()
   })
 

@@ -65,7 +65,7 @@ class Login extends React.Component {
               </div>
               {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
             </div>
-            <ModalButton data = {this.state.data} action = "Log In"/>
+            <ModalButton data = {this.state.data} action = "Log In" type='is-info'/>
 
           </form>
           <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
