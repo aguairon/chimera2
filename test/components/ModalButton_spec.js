@@ -114,3 +114,85 @@ describe('FormButton register test with all required data', () => {
     done()
   })
 })
+
+describe('FormButton comment test when no data is provided', () => {
+  let wrapper
+  beforeEach(done => {
+    const data= {
+      content: ''
+    }
+    const action = 'Submit'
+    wrapper = shallow(<FormButton data={data} action={action} type='is-primary'/>)
+    done()
+  })
+
+  it('should render the correct HTML', done => {
+    expect(wrapper.find('button').length).to.eq(1)
+    expect(wrapper.find('button').text()).to.eq('Submit')
+    expect(wrapper.find('button').props()['disabled']).to.eq(true)
+    expect(wrapper.find('button').hasClass('is-primary')).to.eq(true)
+    done()
+  })
+})
+
+describe('FormButton comment test when all data is provided', () => {
+  let wrapper
+  beforeEach(done => {
+    const data= {
+      content: 'Bla blah lah '
+    }
+    const action = 'Submit'
+    wrapper = shallow(<FormButton data={data} action={action} type='is-primary'/>)
+    done()
+  })
+
+  it('should render the correct HTML', done => {
+    expect(wrapper.find('button').length).to.eq(1)
+    expect(wrapper.find('button').text()).to.eq('Submit')
+    expect(wrapper.find('button').props()['disabled']).to.eq(false)
+    expect(wrapper.find('button').hasClass('is-primary')).to.eq(true)
+    done()
+  })
+})
+
+describe('FormButton article test when no data is provided', () => {
+  let wrapper
+  beforeEach(done => {
+    const data= {
+      title: '',
+      content: ''
+    }
+    const action = 'Submit'
+    wrapper = shallow(<FormButton data={data} action={action} type='is-primary'/>)
+    done()
+  })
+
+  it('should render the correct HTML', done => {
+    expect(wrapper.find('button').length).to.eq(1)
+    expect(wrapper.find('button').text()).to.eq('Submit')
+    expect(wrapper.find('button').props()['disabled']).to.eq(true)
+    expect(wrapper.find('button').hasClass('is-primary')).to.eq(true)
+    done()
+  })
+})
+
+describe('FormButton comment test when no data is provided', () => {
+  let wrapper
+  beforeEach(done => {
+    const data= {
+      title: 'title',
+      content: 'content content'
+    }
+    const action = 'Submit'
+    wrapper = shallow(<FormButton data={data} action={action} type='is-primary'/>)
+    done()
+  })
+
+  it('should render the correct HTML', done => {
+    expect(wrapper.find('button').length).to.eq(1)
+    expect(wrapper.find('button').text()).to.eq('Submit')
+    expect(wrapper.find('button').props()['disabled']).to.eq(false)
+    expect(wrapper.find('button').hasClass('is-primary')).to.eq(true)
+    done()
+  })
+})
