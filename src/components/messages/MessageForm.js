@@ -16,7 +16,7 @@ const MessageForm = ({ data, handleChange, handleSubmit}) => {
             </textarea>
           </div>
         </div>
-        <FormButton data={data.content} action={'Submit'} type={'is-primary'}/>
+        <FormButton data={data} action={'Submit'} type={'is-primary'}/>
       </form>
     </div>
   )
