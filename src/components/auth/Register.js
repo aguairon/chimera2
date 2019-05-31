@@ -97,7 +97,7 @@ class Register extends React.Component {
                 </span>
               }
             </div>
-            <ModalButton data = {this.state.data} type = "Register"/>
+            <ModalButton data = {this.state.data} action = "Register"/>
 
           </form>
           <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
