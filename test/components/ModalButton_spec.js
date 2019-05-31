@@ -18,7 +18,7 @@ describe('ModalButton Login test when no data is provided', () => {
   it('should render the correct HTML', done => {
     expect(wrapper.find('button').length).to.eq(1)
     expect(wrapper.find('button').text()).to.eq('Log In')
-    expect(wrapper.find('button').is('[disabled]')).to.eq(true)
+    expect(wrapper.find('button').props()['disabled']).to.eq(true)
     expect(wrapper.find('button').hasClass('is-info')).to.eq(true)
     done()
   })
@@ -39,7 +39,7 @@ describe('ModalButton Login test with all required data', () => {
   it('should render the correct HTML', done => {
     expect(wrapper.find('button').length).to.eq(1)
     expect(wrapper.find('button').text()).to.eq('Log In')
-    expect(wrapper.find('button').is('[disabled]')).to.eq(false)
+    expect(wrapper.find('button').props()['disabled']).to.eq(false)
     expect(wrapper.find('button').hasClass('is-info')).to.eq(true)
     done()
   })
@@ -60,7 +60,7 @@ describe('ModalButton Login test some required data missing', () => {
   it('should render the correct HTML', done => {
     expect(wrapper.find('button').length).to.eq(1)
     expect(wrapper.find('button').text()).to.eq('Log In')
-    expect(wrapper.find('button').is('[disabled]')).to.eq(true)
+    expect(wrapper.find('button').props()['disabled']).to.eq(true)
     expect(wrapper.find('button').hasClass('is-info')).to.eq(true)
     done()
   })
@@ -84,7 +84,7 @@ describe('ModalButton register test some required data missing', () => {
   it('should render the correct HTML', done => {
     expect(wrapper.find('button').length).to.eq(1)
     expect(wrapper.find('button').text()).to.eq('Register')
-    expect(wrapper.find('button').is('[disabled]')).to.eq(true)
+    expect(wrapper.find('button').props()['disabled']).to.eq(true)
     expect(wrapper.find('button').hasClass('is-info')).to.eq(true)
     done()
   })
@@ -107,7 +107,7 @@ describe('ModalButton register test with all required data', () => {
   it('should render the correct HTML', done => {
     expect(wrapper.find('button').length).to.eq(1)
     expect(wrapper.find('button').text()).to.eq('Register')
-    expect(wrapper.find('button').is('[disabled]')).to.eq(false)
+    expect(wrapper.find('button').props()['disabled']).to.eq(false)
     expect(wrapper.find('button').hasClass('is-info')).to.eq(true)
     done()
   })
