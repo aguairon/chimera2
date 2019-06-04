@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ArticleSearchBar = ({ searchValue, handleChange, handleSubmit }) => {
+const ArticleSearchBar = ({ handleChange, handleSubmit }) => {
   return (
     <form className="searchbar" onSubmit={handleSubmit}>
       <div className="field searchbar">
@@ -10,7 +10,6 @@ const ArticleSearchBar = ({ searchValue, handleChange, handleSubmit }) => {
               className="input"
               type="text"
               placeholder="Search"
-              value={searchValue}
               onChange={handleChange}
               name='search'
               autoComplete='off'

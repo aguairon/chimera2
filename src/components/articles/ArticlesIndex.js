@@ -41,7 +41,6 @@ class ArticlesIndex extends React.Component {
           <ArticleSearchBar
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            searchValue={this.searchValue}
           />
           {this.filterArticles().map(article =>
             <ArticlePanel  key={article.id} article ={article}/>
