@@ -5,14 +5,14 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import ArticleSearchBar from '../../src/components/articles/ArticleSearchBar'
-// import ArticlesIndex from '../../src/components/articles/ArticlesIndex'
 
 describe('ArticleSearchBar Login test when no data is provided', () => {
   let wrapper
 
   const onSubmit = sinon.stub()
+  const onChange = sinon.stub()
   beforeEach(done => {
-    wrapper = shallow(<ArticleSearchBar handleChange={onSubmit}/>)
+    wrapper = shallow(<ArticleSearchBar handleChange={onChange} handleSubmit={onSubmit}/>)
     done()
   })
 
@@ -29,7 +29,10 @@ describe('ArticleSearchBar Login test when no data is provided', () => {
 
   it('responds to value change', done => {
     wrapper.find('form .searchbar input').simulate('change', { target: { value: 'Hello' }})
-    expect(onSubmit.calledOnce).to.be.true
+    expect(onChange.calledOnce).to.be.true
+
+    // wrapper.simulate('keypress', {keyCode: 13})
+    // expect(onSubmit.calledOnce).to.be.true
     done()
   })
 })

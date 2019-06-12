@@ -19,8 +19,7 @@ class ArticleNew extends React.Component {
 
   handleChange({ target: { name, value }}) {
     const data = {...this.state.data, [name]: value }
-    const errors = {...this.state.errors, [name]: null }
-    this.setState({ data, errors })
+    this.setState({ data })
   }
 
   handleSubmit(e) {
@@ -64,7 +63,7 @@ class ArticleNew extends React.Component {
               </div>
             </div>
 
-            {error && <small className="help is-danger">{error}</small>}
+            {error && <div className="help is-danger">{error}</div>}
             <FormButton data={data} action={'Submit'} type={'is-primary'}/>
           </form>
         </div>

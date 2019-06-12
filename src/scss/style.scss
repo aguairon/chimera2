@@ -226,6 +226,11 @@ body #root {
   padding-bottom: 0;
 }
 
+form .is-danger {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
 @media screen and (min-width: 769px) {
   .tile:not(.is-child) {
       display: block;

@@ -55,7 +55,7 @@ def create():
         article.save()
     except ValueError as e:
         return jsonify({
-            'message': str(e)
+            'message': str(e).capitalize()
         }), 422
 
     return article_schema.jsonify(article)
