@@ -18,8 +18,6 @@ class ArticleShow extends React.Component {
     }
 
     this.handleLike = this.handleLike.bind(this)
-    this.handleMessageChange = this.handleMessageChange.bind(this)
-    this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -44,22 +42,6 @@ class ArticleShow extends React.Component {
     }
   }
 
-  handleMessageChange({ target: { name, value }}) {
-    const data = {...this.state.data, [name]: value }
-    const errors = {...this.state.errors, [name]: null }
-    this.setState({ data, errors })
-  }
-
-  handleMessageSubmit(e) {
-    e.preventDefault()
-    axios
-      .post(`/api/articles/${this.props.match.params.id}/messages`,
-        this.state.data,
-        { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(res => this.setState({newMessage: res.data, data: {}}))
-      .catch(err => this.setState({error: err.response.status}))
-  }
-
   render() {
     if(!this.state.article) return null
     const  {title, content, messages, creator, created_at: createdAt} = this.state.article
@@ -76,12 +58,8 @@ class ArticleShow extends React.Component {
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
           <ArticleLike likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
-          <MessageForm
-            handleSubmit={this.handleMessageSubmit}
-            handleChange={this.handleMessageChange}
-            data={this.state.data}
-          />
-          <MessagesIndex messages={messages} newMessage={this.state.newMessage}/>
+          <MessageForm articleId={this.props.match.params.id}  />
+          <MessagesIndex messages={messages}/>
         </div>
       </section>
     )
