@@ -18,7 +18,6 @@ class ArticleShow extends React.Component {
     }
 
     this.handleLike = this.handleLike.bind(this)
-    this.handleAddMessage = this.handleAddMessage.bind(this)
     this.handleMessageChange = this.handleMessageChange.bind(this)
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
   }
@@ -43,10 +42,6 @@ class ArticleShow extends React.Component {
         .then(res => this.setState({ article: res.data }))
         .catch(err => this.setState({error: err.response}))
     }
-  }
-
-  handleAddMessage() {
-    this.setState({addingMessage: true})
   }
 
   handleMessageChange({ target: { name, value }}) {
