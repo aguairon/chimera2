@@ -44,7 +44,7 @@ class ArticleShow extends React.Component {
 
   render() {
     if(!this.state.article) return null
-    const  {title, content, messages, creator, created_at: createdAt} = this.state.article
+    const  {title, content, messages, creator, created_at: createdAt, liked_by: likedBy} = this.state.article
     return(
       <section className="section">
         <div className="container">
@@ -57,7 +57,7 @@ class ArticleShow extends React.Component {
             </div>
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
-          <ArticleLike likedBy={this.state.article.liked_by} handleLike={this.handleLike} error={this.state.error}/>
+          <ArticleLike likedBy={likedBy} handleLike={this.handleLike} error={this.state.error}/>
           <MessageForm articleId={this.props.match.params.id}  />
           <MessagesIndex messages={messages}/>
         </div>
