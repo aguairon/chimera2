@@ -12,8 +12,6 @@ class ArticleShow extends React.Component {
     super()
 
     this.state = {
-      data: {
-      }
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -43,7 +41,7 @@ class ArticleShow extends React.Component {
 
   render() {
     if(!this.state.article) return null
-    const  {id, title, content, messages, creator, created_at: createdAt} = this.state.article
+    const  { title, content, messages, creator, created_at: createdAt} = this.state.article
     return(
       <section className="section">
         <div className="container">
@@ -54,7 +52,7 @@ class ArticleShow extends React.Component {
             name="title"
             onChange={this.handleChange}
             value={title}
-            readOnly={Auth.isCurrentUser(id)}
+            readOnly={!Auth.isCurrentUser(creator.id)}
           />
 
 
