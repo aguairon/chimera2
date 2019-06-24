@@ -183,11 +183,26 @@ body #root {
 
 .tile.article,  {
   background-color: #ff5146;
-  font-size: 18px;
+  textarea.hidden-input {
+    font-size: 18px;
+    background-color: #ff5146;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-family: 'Laila';
+    padding-left: 0px;
+    padding-right: 0px;
+  }
   a.createdBy {
     text-decoration: none;
     font-size: 16px;
   }
+}
+
+.title.hidden-input {
+  background-color: #0f1a31;
+  border-color: #0f1a31;
+  box-shadow: none;
 }
 
 .messages > .tile.is-child.message {
@@ -229,12 +244,6 @@ body #root {
 form .is-danger {
   margin-bottom: 10px;
   font-size: 14px;
-}
-
-.title.hidden-input {
-  background-color: #0f1a31;
-  border-color: #0f1a31;
-  box-shadow: none;
 }
 
 @media screen and (min-width: 769px) {

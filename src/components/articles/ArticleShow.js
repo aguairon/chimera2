@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import MessagesIndex from '../../components/messages/MessagesIndex'
 import MessageForm from '../../components/messages/MessageForm'
 import ArticleLike from '../articles/ArticleLike'
+import TextareaAutosize from 'react-textarea-autosize'
+import debounce from 'lodash/debounce'
 
 
 class ArticleShow extends React.Component {
@@ -15,7 +17,7 @@ class ArticleShow extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.delayedCallback = debounce(this.putArticle, 1000)
   }
 
   componentDidMount() {
@@ -26,16 +28,15 @@ class ArticleShow extends React.Component {
   handleChange({ target: { name, value }}) {
     const article = {...this.state.article, [name]: value }
     this.setState({ article })
+    this.delayedCallback()
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-
+  putArticle() {
     axios
-      .post('/api/articles',
-        this.state.data,
+      .put(`/api/articles/${this.props.match.params.id}`,
+        this.state.article,
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-      .then(res => this.props.history.push(`/articles/${res.data.id}`))
+      .then(res => this.setState({ article: res.data}))
       .catch(err => this.setState({ error: err.response.data.message }))
   }
 
@@ -54,14 +55,16 @@ class ArticleShow extends React.Component {
             value={title}
             readOnly={!Auth.isCurrentUser(creator.id)}
           />
-
-
           <article className="tile article is-child notification is-danger">
-            <div className="content">
-              {content.split('\n').map((item, key) => {
-                return <span key={key}>{item}<br/></span>
-              })}
-            </div>
+            <TextareaAutosize
+              autoComplete="off"
+              className="article is-1 input hidden-input"
+              placeholder="Article content is required"
+              name="content"
+              onChange={this.handleChange}
+              value={content}
+              readOnly={!Auth.isCurrentUser(creator.id)}
+            />
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
           <ArticleLike
