@@ -13,13 +13,11 @@ class ArticleShow extends React.Component {
 
     this.state = {
       data: {
-        content: ''
       }
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleLike = this.handleLike.bind(this)
   }
 
   componentDidMount() {
@@ -43,26 +41,9 @@ class ArticleShow extends React.Component {
       .catch(err => this.setState({ error: err.response.data.message }))
   }
 
-  handleLike() {
-    if(!this.state.article.liked_by.some(like => Auth.isCurrentUser(like.id))) {
-      axios
-        .put(`/api/articles/${this.props.match.params.id}/like`,
-          {},
-          { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-        .then(res => this.setState({ article: res.data }))
-        .catch(err => this.setState({error: err.response.status}))
-    } else {
-      axios
-        .delete(`/api/articles/${this.props.match.params.id}/like`,
-          { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
-        .then(res => this.setState({ article: res.data }))
-        .catch(err => this.setState({error: err.response}))
-    }
-  }
-
   render() {
     if(!this.state.article) return null
-    const  {id, title, content, messages, creator, created_at: createdAt, liked_by: likedBy} = this.state.article
+    const  {id, title, content, messages, creator, created_at: createdAt} = this.state.article
     return(
       <section className="section">
         <div className="container">
@@ -85,7 +66,9 @@ class ArticleShow extends React.Component {
             </div>
             <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
           </article>
-          <ArticleLike likedBy={likedBy} handleLike={this.handleLike} error={this.state.error}/>
+          <ArticleLike
+            article= {this.state.article}
+            id= {this.props.match.params.id}/>
           <MessageForm articleId={this.props.match.params.id}  />
           <MessagesIndex messages={messages}/>
         </div>
