@@ -231,6 +231,12 @@ form .is-danger {
   font-size: 14px;
 }
 
+.title.hidden-input {
+  background-color: #0f1a31;
+  border-color: #0f1a31;
+  box-shadow: none;
+}
+
 @media screen and (min-width: 769px) {
   .tile:not(.is-child) {
       display: block;

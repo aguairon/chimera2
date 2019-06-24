@@ -17,12 +17,30 @@ class ArticleShow extends React.Component {
       }
     }
 
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleLike = this.handleLike.bind(this)
   }
 
   componentDidMount() {
     axios.get(`/api/articles/${this.props.match.params.id}`)
-      .then(res => this.setState({ article: res.data }))
+      .then(res => this.setState({ article: res.data}))
+  }
+
+  handleChange({ target: { name, value }}) {
+    const article = {...this.state.article, [name]: value }
+    this.setState({ article })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    axios
+      .post('/api/articles',
+        this.state.data,
+        { headers: { Authorization: `Bearer ${Auth.getToken()}`}})
+      .then(res => this.props.history.push(`/articles/${res.data.id}`))
+      .catch(err => this.setState({ error: err.response.data.message }))
   }
 
   handleLike() {
@@ -44,11 +62,21 @@ class ArticleShow extends React.Component {
 
   render() {
     if(!this.state.article) return null
-    const  {title, content, messages, creator, created_at: createdAt, liked_by: likedBy} = this.state.article
+    const  {id, title, content, messages, creator, created_at: createdAt, liked_by: likedBy} = this.state.article
     return(
       <section className="section">
         <div className="container">
-          <h1 className='title is-1'>{title}</h1>
+          <input
+            autoComplete="off"
+            className="title is-1 input hidden-input"
+            placeholder="Name is required"
+            name="title"
+            onChange={this.handleChange}
+            value={title}
+            readOnly={Auth.isCurrentUser(id)}
+          />
+
+
           <article className="tile article is-child notification is-danger">
             <div className="content">
               {content.split('\n').map((item, key) => {
