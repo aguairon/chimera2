@@ -184,7 +184,6 @@ body #root {
 .tile.article,  {
   background-color: #ff5146;
   textarea.hidden-input {
-    font-size: 18px;
     background-color: #ff5146;
     color: white;
     border: none;
@@ -192,6 +191,7 @@ body #root {
     font-family: 'Laila';
     padding-left: 0px;
     padding-right: 0px;
+    resize: none;
   }
   a.createdBy {
     text-decoration: none;
@@ -200,6 +200,7 @@ body #root {
 }
 
 .title.hidden-input {
+  padding-left: 0px;
   background-color: #0f1a31;
   border-color: #0f1a31;
   box-shadow: none;
