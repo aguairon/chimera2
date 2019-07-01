@@ -45,7 +45,7 @@ class ArticleShow extends React.Component {
     const  { title, content, messages, creator, created_at: createdAt} = this.state.article
     return(
       <section className="section">
-        <div className="container">
+        <div className="container article">
           <input
             autoComplete="off"
             className="title is-1 input hidden-input"
@@ -62,10 +62,13 @@ class ArticleShow extends React.Component {
               placeholder="Article content is required"
               name="content"
               onChange={this.handleChange}
+              useCacheForDOMMeasurements
               value={content}
               readOnly={!Auth.isCurrentUser(creator.id)}
             />
-            <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
+            <div className='creator'>
+              <Link to={`/users/${creator.id}`} className='createdBy'> Written by {creator.username} on {createdAt}</Link>
+            </div>
           </article>
           <ArticleLike
             article= {this.state.article}

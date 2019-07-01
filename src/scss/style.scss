@@ -180,6 +180,9 @@ body #root {
 .tile {
   flex-wrap: wrap;
 }
+.article .creator {
+padding-top: 30px;
+}
 
 .tile.article,  {
   background-color: #ff5146;
@@ -189,13 +192,13 @@ body #root {
     border: none;
     box-shadow: none;
     font-family: 'Laila';
+    font-size: 16px;
     padding-left: 0px;
     padding-right: 0px;
-    resize: none;
   }
   a.createdBy {
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
