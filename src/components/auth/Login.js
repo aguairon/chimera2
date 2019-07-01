@@ -70,7 +70,7 @@ class Login extends React.Component {
             <FormButton data = {this.state.data} action = "Log In" type='is-info'/>
 
           </form>
-          <ModalSwapLink handleToggle = {this.props.handleToggle} message='Already a member? Sign in'/>
+          <ModalSwapLink handleToggle = {this.props.handleToggle} message='A new member? Create an account'/>
         </div>
       </main>
     )
