@@ -22,10 +22,23 @@ describe('ArticleLike test with one likedBy that is not the current user', () =>
 
   beforeEach(done => {
     const props = {
-      likedBy: [{id: 6, username: 'begona'}]
+      article: {
+        content: 'viva viva un nuevo articulo.',
+        created_at: '2019-06-21 15:01:49',
+        creator: {
+          email: 'roan@gmail.com',
+          id: 5,
+          username: 'roan'
+        },
+        id: 15,
+        liked_by: [{id: 1,username: 'carmen'}],
+        messages: [],
+        title: 'Este es un nuevo articulo',
+        updated_at: '2019-06-24 16:07:28'
+      }
     }
 
-    wrapper = shallow(<ArticleLike likedBy={props.likedBy}/>)
+    wrapper = shallow(<ArticleLike article={props.article}/>)
     done()
   })
 
@@ -58,10 +71,23 @@ describe('ArticleLike test with one likedBy that is the current user', () => {
 
   beforeEach(done => {
     const props = {
-      likedBy: [{id: 6, username: 'begona'}]
+      article: {
+        content: 'viva viva un nuevo articulo.',
+        created_at: '2019-06-21 15:01:49',
+        creator: {
+          email: 'roan@gmail.com',
+          id: 5,
+          username: 'roan'
+        },
+        id: 15,
+        liked_by: [{id: 1,username: 'carmen'}],
+        messages: [],
+        title: 'Este es un nuevo articulo',
+        updated_at: '2019-06-24 16:07:28'
+      }
     }
 
-    wrapper = shallow(<ArticleLike likedBy={props.likedBy}/>)
+    wrapper = shallow(<ArticleLike article={props.article}/>)
     done()
   })
 
@@ -93,10 +119,23 @@ describe('ArticleLike test with no likedBy ', () => {
 
   beforeEach(done => {
     const props = {
-      likedBy: []
+      article: {
+        content: 'viva viva un nuevo articulo.',
+        created_at: '2019-06-21 15:01:49',
+        creator: {
+          email: 'roan@gmail.com',
+          id: 5,
+          username: 'roan'
+        },
+        id: 15,
+        liked_by: [],
+        messages: [],
+        title: 'Este es un nuevo articulo',
+        updated_at: '2019-06-24 16:07:28'
+      }
     }
 
-    wrapper = shallow(<ArticleLike likedBy={props.likedBy}/>)
+    wrapper = shallow(<ArticleLike article={props.article}/>)
     done()
   })
 
@@ -128,10 +167,23 @@ describe('ArticleLike test with several likedBy ', () => {
 
   beforeEach(done => {
     const props = {
-      likedBy: [{id: 6, username: 'begona'}, {id: 1, username: 'carmen'}]
+      article: {
+        content: 'viva viva un nuevo articulo.',
+        created_at: '2019-06-21 15:01:49',
+        creator: {
+          email: 'roan@gmail.com',
+          id: 5,
+          username: 'roan'
+        },
+        id: 15,
+        liked_by: [{id: 1,username: 'carmen'}, {id: 2,username: 'roan'}],
+        messages: [],
+        title: 'Este es un nuevo articulo',
+        updated_at: '2019-06-24 16:07:28'
+      }
     }
 
-    wrapper = shallow(<ArticleLike likedBy={props.likedBy}/>)
+    wrapper = shallow(<ArticleLike article={props.article}/>)
     done()
   })
 
