@@ -41,28 +41,17 @@ class ArticleLike extends React.Component {
       return <p>Loading</p>
     }
     const { article: {liked_by: likedBy} } = this.state
-    const userLiked = 'You have liked this.'
-    const likedMany = 'This article has been liked ' + likedBy.length + ' times.'
-    const likedOnce = 'This article has been liked once.'
+    const userLiked =
+      likedBy.some(like => Auth.isCurrentUser(like.id)) ?
+        'You have liked this. ' :
+        ''
+    const times = likedBy.length === 1 ? 'once.' : likedBy.length + ' times.'
+    const liked = likedBy.length === 0 ?
+      'This article has not been liked yet.' :
+      userLiked + 'This article has been liked ' + times
+    const error = this.state.error === 403 ? 'You cannot like your own article. ' : ''
 
-    let message
-    if (this.state.error === 403) {
-      message = <p>You cannot like your own article.</p>
-    } else if (likedBy.length === 0){
-      message = <p>This article has not been liked yet.</p>
-    } else if (likedBy.length === 1) {
-      if (likedBy.some(like => Auth.isCurrentUser(like.id))) {
-        message = <p>{userLiked} {likedOnce}</p>
-      } else {
-        message = <p>{likedOnce}</p>
-      }
-    } else {
-      if (likedBy.some(like => Auth.isCurrentUser(like.id))) {
-        message = <p>{userLiked} {likedMany}</p>
-      } else {
-        message = <p>{likedMany}</p>
-      }
-    }
+
     return (
       <div className={likedBy.some(like =>
         Auth.isCurrentUser(like.id)) ? 'likes liked_by_user' : 'likes'}>
@@ -71,7 +60,7 @@ class ArticleLike extends React.Component {
             <i className="fas fa-2x fa-thumbs-up"></i>
           </span>
         </button>
-        {message}
+        <p>{error}{liked}</p>
       </div>
     )
   }
