@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import FormButton from '../common/FormButton'
+import TextareaAutosize from 'react-textarea-autosize'
 
 class ArticleNew extends React.Component {
   constructor() {
@@ -38,31 +39,28 @@ class ArticleNew extends React.Component {
     return(
       <main className="section">
         <div className="container">
-          <h1 className="title is-1">New article</h1>
+          <h1 className="title is-3">New article</h1>
           <form onSubmit={this.handleSubmit}>
-            <div className="field">
-              <div className="control">
-                <input
-                  className="input"
-                  placeholder="Article title"
-                  onChange={this.handleChange}
-                  name="title"
-                  value={data.title|| ''}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <div className="control">
-                <textarea
-                  className="textarea"
-                  placeholder="Please write your article here"
-                  onChange={this.handleChange}
-                  name="content"
-                  value={data.content || ''}
-                />
-              </div>
-            </div>
-
+            <input
+              autoComplete="off"
+              className="title is-1 input hidden-input"
+              placeholder="Title is required"
+              autoFocus
+              name="title"
+              onChange={this.handleChange}
+              value={data.title}
+            />
+            <article className="tile article is-child notification is-danger">
+              <TextareaAutosize
+                autoComplete="off"
+                className="article is-1 input hidden-input"
+                placeholder="Article content is required"
+                name="content"
+                onChange={this.handleChange}
+                useCacheForDOMMeasurements
+                value={data.content}
+              />
+            </article>
             {error && <div className="help is-danger">{error}</div>}
             <FormButton data={data} action={'Submit'} type={'is-primary'}/>
           </form>

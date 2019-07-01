@@ -196,6 +196,10 @@ padding-top: 30px;
     padding-left: 0px;
     padding-right: 0px;
   }
+  ::placeholder {
+    color: white;
+  }
+
   a.createdBy {
     text-decoration: none;
     font-size: 20px;
@@ -211,6 +215,9 @@ padding-top: 30px;
   border-color: #0f1a31;
   box-shadow: none;
 }
+.title::placeholder {
+    color: white;
+  }
 
 .messages > .tile.is-child.message {
   margin: 10px;
@@ -246,6 +253,10 @@ padding-top: 30px;
 
 .search {
   padding-bottom: 0;
+}
+
+form button{
+  margin-top: 50px;
 }
 
 form .is-danger {
